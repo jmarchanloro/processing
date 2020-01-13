@@ -27,30 +27,11 @@ void setup ()
   }
 }
 
-void draw_circle(float center_x, float center_y, int offset, float angle, boolean vertical)
-{
-    strokeWeight(1);
-    stroke(255);
-    noFill();
-    ellipse(center_x,center_y,diameter,diameter);
-    float x = radio*cos(angle*(offset+1) - PI/2);
-    float y = radio*sin(angle*(offset+1) - PI/2);
-    strokeWeight(8);
-    point(center_x+x, center_y+y);
-    
-    stroke(255,50);
-    strokeWeight(1);
-    if (vertical)
-      line(center_x+x, center_y+y, center_x+x, height);
-    else
-      line(center_x+x, center_y+y, width, center_y+y); 
-}
-
 void draw()
 {
   background(0);
    
-     for (int i = 0; i < rows; i++)
+  for (int i = 0; i < rows; i++)
   {
     for(int j = 0; j < cols; j++)
     {
@@ -79,7 +60,6 @@ void draw()
     {
       points[r][i].x = center_x+x;
     }
-    //draw_circle(w + i*w + w/2, w/2, i, angle_col, true);
   }
   
   for (int i = 0; i < rows; i++)
@@ -103,7 +83,6 @@ void draw()
     {
       points[i][c].y = center_y+y;
     }
-    //draw_circle(w/2, w + i*w + w/2, i, angle_row, false);
   }
   
   
@@ -134,8 +113,7 @@ void draw()
     saveFrame("frames//###.png");
     lastAngle = angle_col;
   }
+  
   angle_col += 0.01;
-  angle_row += 0.01;
-  
-  
+  angle_row += 0.01;  
 }
